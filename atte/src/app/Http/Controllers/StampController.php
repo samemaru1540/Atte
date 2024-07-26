@@ -11,18 +11,4 @@ class StampController extends Controller
         return view('stamp');
     }
 
-    public function confirm()
-    {
-        
-    }
-
-    public function login()
-    {
-        return view('login');
-    }
-
-    public function register()
-    {
-        return view('register');
-    }
 }

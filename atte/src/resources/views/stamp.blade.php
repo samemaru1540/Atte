@@ -6,14 +6,22 @@
 
 @section('header')
   <ul class="top-header__nav">
-    <li class="top-header__nav-list"><a href=""></a>ホーム</li>
-    <li class="top-header__nav-list"><a href=""></a>日付一覧</li>
-    <li class="top-header__nav-list"><a href=""></a>ログアウト</li>
+    <li class="top-header__nav-list">
+      <a href=""></a>ホーム</li>
+    <li class="top-header__nav-list"><a href="">
+    </a>日付一覧</li>
+    @if (Auth::check())
+    <li class="top-header__nav-list">
+      <form action="/logout" method="post">
+        @csrf
+        <a href="/logout"></a>ログアウト</form></li>
+    @endif
   </ul>
 @endsection
 
 @section('content')
 <form action="/" class="form">
+  @csrf
   <div class="stamp-form">
     <div class="stamp-form__inputs">
       <div class="stamp-form__attend">

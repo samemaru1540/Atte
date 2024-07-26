@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StampController;
-
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use App\Http\Controllers\StampController;
 |
 */
 
-Route::get('/', [StampController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [StampController::class, 'index']);
+});
 Route::post('/', [StampController::class, 'index']);
-Route::get('/login', [StampController::class, 'login']);
-Route::get('/register', [StampController::class, 'register']);
+Route::get('/register', [RegisteredUserController::class, 'create']);
